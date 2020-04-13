@@ -24,7 +24,8 @@ export class AppComponent {
       !this.namesList.includes(this.name) &&
       !this.namesList.includes(this.name[0].toUpperCase() + this.name.substr(1))
     ) {
-      this.namesList.push(name);
+      this.namesList.push(name[0].toUpperCase() + name.substr(1));
+      this.message = "";
       this.showNames = this.namesList.length !== 0;
     } else {
       this.message = "Name already on list.";
