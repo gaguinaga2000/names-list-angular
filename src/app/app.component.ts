@@ -31,8 +31,6 @@ export class AppComponent {
       this.message = "Name already on list.";
     }
     this.name = "";
-    console.log("filterd " + this.filteredList);
-    console.log("namesLIst " + this.namesList);
   }
 
   getSearchedText($event: any) {
