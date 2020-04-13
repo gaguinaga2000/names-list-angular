@@ -1,9 +1,13 @@
-<div class="container border p-5">
+<app-header [filteredList]="filteredList"></app-header>
+
+<div class="container border pl-5 pr-5 p-4 rounded">
   <div class="row mb-2">
     <!-- @Output() searchedText: belongs to 'app-search-input' -->
-    <app-search-input
-      (searchedText)="getSearchedText($event)"
-    ></app-search-input>
+    <div class="w-100">
+      <app-search-input
+        (searchedText)="getSearchedText($event)"
+      ></app-search-input>
+    </div>
   </div>
   <div class="row">
     <div *ngIf="showNames; else noNames" class="w-100">
@@ -16,7 +20,23 @@
             'list-group-item-info': i % 2 !== 0
           }"
         >
-          <span (click)="deleteName(i)"> {{ name }}</span>
+          {{ name }}
+          <div class="float-right deleteIcon" (click)="deleteName(i)">
+            <svg
+              class="bi bi-trash-fill"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
         </li>
       </ul>
     </div>
@@ -25,22 +45,28 @@
     <div class="bg-danger w-100 p-2 text-white rounded">No names to show</div>
   </ng-template>
   <div class="row mt-3">
-    <form>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="name"
-          name="name-input"
-          placeholder="Enter name"
-        />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="addName(name)">
-          Add Name
-        </button>
+    <div class="w-100">
+      <form>
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="name"
+            name="name-input"
+            placeholder="Enter name"
+          />
+
+          <div class="input-group-append">
+            <input
+              type="submit"
+              value="Add Name"
+              class="btn btn-primary"
+              (click)="addName(name)"
+            />
+          </div>
+        </div>
         <div class="text-danger">{{ message }}</div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

@@ -5,9 +5,10 @@ import { AppComponent } from "./app.component";
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { SearchInputComponent } from './search-input/search-input.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, ServerComponent, ServersComponent, SearchInputComponent],
+  declarations: [AppComponent, ServerComponent, ServersComponent, SearchInputComponent, HeaderComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
